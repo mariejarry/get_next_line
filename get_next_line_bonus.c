@@ -6,11 +6,12 @@
 /*   By: mjarry <marvin@42quebec.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 11:37:43 by mjarry            #+#    #+#             */
-/*   Updated: 2022/01/24 14:00:53 by mjarry           ###   ########.fr       */
+/*   Updated: 2022/01/24 14:29:07 by mjarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <limits.h>
 
 char	*create_remainder_str(int fd, char *remainder)
 {
@@ -90,7 +91,7 @@ char	*update_remainder(char	*remainder)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*remainder[4096];
+	static char	*remainder[OPEN_MAX];
 
 	remainder[fd] = create_remainder_str(fd, remainder[fd]);
 	if (!remainder[fd])
